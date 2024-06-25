@@ -109,15 +109,21 @@ process.stdin.on('data', function (data) {
                     console.log(j + '.', numeros[i]);
                     j++;
                 }
-                let a = input
 
+                let a = input
                 if (!a) {
-                    console.log(j);
+                    console.log(a);
                     if (a == 1) {
                         dados.nomePaciente = input;
                         console.log(dados.nomePaciente);
                     }
                 }
+                opcao = 0;
+                console.log('Escolha uma nova opção ou digite "Sair" para finalizar.');
+                console.log(1, ' Adicionar uma nova consulta.');
+                console.log(2, ' Listar todas as consultas.');
+                console.log(3, ' Atualizar uma consulta existente.');
+                console.log(4, ' Cancelar uma consulta.');
 
                 break;
 
@@ -126,8 +132,6 @@ process.stdin.on('data', function (data) {
                 let c = input
                 consultasCanceladas.push(consultas[c]);
                 consultas.splice(c, 1);
-                console.log(consultas);
-                console.log(consultasCanceladas);
                 opcao = 0;
                 console.log('Escolha uma nova opção ou digite "Sair" para finalizar.');
                 console.log(1, ' Adicionar uma nova consulta.');
