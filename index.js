@@ -1,3 +1,6 @@
+
+                let consultaAtualizar
+                let atributoAtualizar
 const consultas = [{
     nomePaciente: 'Fabio',
     nomeMedico: 'Carlos',
@@ -100,24 +103,28 @@ process.stdin.on('data', function (data) {
 
                 break;
 
-            case 3:
-
-                console.log('Escolha pelo índice qual dado deseja atualizar:');
-                let j = 1;
-                let numeros = Object.keys(dados);
-                for (let i = 0; i < numeros.length; i++) {
-                    console.log(j + '.', numeros[i]);
-                    j++;
-                }
-                let a = input
-
-                if (!a) {
-                    console.log(j);
-                    if (a == 1) {
-                        dados.nomePaciente = input;
-                        console.log(dados.nomePaciente);
+                case 3:
+                    let numeros = Object.entries(consultas[0]);
+                    if (!consultaAtualizar) {
+                    consultaAtualizar = input
+                    console.log('Escolha pelo índice qual dado deseja atualizar:');
+                    for (let i = 0; i < numeros.length; i++) {
+                        console.log(i+1 + '.', numeros[i][0], numeros[i][1]);
                     }
+                } else if (!atributoAtualizar) {
+                    atributoAtualizar = numeros[input-1][0];
+                    console.log('Qual dado deseja substituir nesse atributo?');
+                    
+                } else {
+                    consultas[consultaAtualizar][atributoAtualizar] = input;    
+                    opcao = 0;
+                    console.log('Escolha uma nova opção ou digite "Sair" para finalizar.');
+                    console.log(1, ' Adicionar uma nova consulta.');
+                    console.log(2, ' Listar todas as consultas.');
+                    console.log(3, ' Atualizar uma consulta existente.');
+                    console.log(4, ' Cancelar uma consulta.');
                 }
+
 
                 break;
 
@@ -126,8 +133,6 @@ process.stdin.on('data', function (data) {
                 let c = input
                 consultasCanceladas.push(consultas[c]);
                 consultas.splice(c, 1);
-                console.log(consultas);
-                console.log(consultasCanceladas);
                 opcao = 0;
                 console.log('Escolha uma nova opção ou digite "Sair" para finalizar.');
                 console.log(1, ' Adicionar uma nova consulta.');
