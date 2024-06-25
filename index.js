@@ -1,7 +1,7 @@
-const consultas = [];
+const consultas = ['a', 'b', 'c'];
 let dados = {
-    nomeP: '',
-    nomeM: '',
+    nomePaciente: '',
+    nomeMedico: '',
     data: '',
     hora: ''
 };
@@ -17,49 +17,72 @@ console.log(4, ' Cancelar uma consulta.');
 process.stdin.on('data', function (data) {
     input = data.toString().trim();
 
+    if (input == 'Sair' || input == 'sair') {
+        process.exit();
+    }
+
     if (!opcao) {
         opcao = Number(input);
-    } else if (opcao == 1) {
-        console.log('Beleza. Vamos adicionar uma nova consulta.');
-        console.log('Informe o nome do paciente:');
-    } else if (opcao == 2) {
-
-    }
-
-    switch (opcao) {
-        case 1:
-
-            if (!dados.nomeP) {
-                dados.nomeP = input;
-                console.log('Informe o nome do médico:');
-            } else if (!dados.nomeM) {
-                dados.nomeM = input;
-                console.log('Informe a data da consulta:');
-            } else if (!dados.data) {
-                dados.data = input;
-                console.log('Informe o horário da consulta:');
-            } else if (!dados.hora) {
-                dados.hora = input;
-                consultas.push(dados);
-                console.log(consultas);
+        if (opcao == 1) {
+            console.log('Informe o nome do paciente:');
+        } else if (opcao == 2) {
+            console.log('Aqui está a lista de todas as consultas cadastradas:');
+            for (let i = 0; i < consultas.length; i++) {
+                console.log([i], ' - ', consultas[i]);
             }
+        } else if (opcao == 3) {
+            console.log('Vamos atualizar uma consulta.');
+        } else if (opcao == 4) {
+            console.log('Vamos cancelar uma consulta:');
+        }
+    } else
 
-            break;
+        switch (opcao) {
+            case 1:
 
-        case 2:
+                if (!dados.nomePaciente) {
+                    dados.nomePaciente = input;
+                    console.log('Informe o nome do médico:');
+                } else if (!dados.nomeMedico) {
+                    dados.nomeMedico = input;
+                    console.log('Informe a data da consulta:');
+                } else if (!dados.data) {
+                    dados.data = input;
+                    console.log('Informe o horário da consulta:');
+                } else {
+                    dados.hora = input;
+                    consultas.push(dados);
+                    console.log(consultas);
+                    dados = {
+                        nomePaciente: '',
+                        nomeMedico: '',
+                        data: '',
+                        hora: ''
+                    };
+                    opcao = 0;
+                    console.log('Escolha uma nova opção ou digite "Sair" para finalizar.');
+                    console.log(1, ' Adicionar uma nova consulta.');
+                    console.log(2, ' Listar todas as consultas.');
+                    console.log(3, ' Atualizar uma consulta existente.');
+                    console.log(4, ' Cancelar uma consulta.');
+                }
 
-            break;
+                break;
 
-        case 3:
+            case 2:
 
-            break;
+                break;
 
-        case 4:
+            case 3:
 
-            break;
+                break;
 
-        default:
-            console.log('Opção inválida.');
-            break;
-    }
+            case 4:
+
+                break;
+
+            default:
+                console.log('Opção inválida.');
+                break;
+        }
 })
