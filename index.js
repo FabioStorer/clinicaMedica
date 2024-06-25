@@ -4,6 +4,7 @@ const consultas = [{
     data: '31 de janeiro',
     hora: '13h'
 }];
+const consultasCanceladas = [];
 let dados = {
     nomePaciente: '',
     nomeMedico: '',
@@ -12,6 +13,7 @@ let dados = {
 };
 let input = '';
 let opcao = 0;
+let cancelar = 'Consulta cancelada.';
 
 console.log('Olá, bem vindo(a). Selecione uma opção válida para começar:');
 console.log(1, ' Adicionar uma nova consulta.');
@@ -56,6 +58,13 @@ process.stdin.on('data', function (data) {
             }
         } else if (opcao == 4) {
             console.log('Vamos cancelar uma consulta:');
+            console.log('Aqui está a lista de todas as consultas cadastradas:');
+            let k = 0;
+            for (let i = 0; i < consultas.length; i++) {
+                console.log([k], ' - ', consultas[i]);
+                k++
+            }
+            console.log('Escolha pelo índice qual consulta deseja cancelar.');
         }
     } else
 
@@ -95,19 +104,36 @@ process.stdin.on('data', function (data) {
 
                 console.log('Escolha pelo índice qual dado deseja atualizar:');
                 let j = 1;
-                let numeros = Object.entries(dados);
+                let numeros = Object.keys(dados);
                 for (let i = 0; i < numeros.length; i++) {
-                    console.log(j, numeros[i]);
+                    console.log(j + '.', numeros[i]);
                     j++;
                 }
+                let a = input
 
-                if (numeros == 1) {
-                    console.log(dados.nomePaciente);
+                if (!a) {
+                    console.log(j);
+                    if (a == 1) {
+                        dados.nomePaciente = input;
+                        console.log(dados.nomePaciente);
+                    }
                 }
 
                 break;
 
             case 4:
+
+                let c = input
+                consultasCanceladas.push(consultas[c]);
+                consultas.splice(c, 1);
+                console.log(consultas);
+                console.log(consultasCanceladas);
+                opcao = 0;
+                console.log('Escolha uma nova opção ou digite "Sair" para finalizar.');
+                console.log(1, ' Adicionar uma nova consulta.');
+                console.log(2, ' Listar todas as consultas.');
+                console.log(3, ' Atualizar uma consulta existente.');
+                console.log(4, ' Cancelar uma consulta.');
 
                 break;
 
