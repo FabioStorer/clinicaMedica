@@ -77,6 +77,13 @@ process.stdin.on('data', function (data) {
 
             case 3:
 
+                console.log('Aqui está a lista de todas as consultas cadastradas:');
+                for (let i = 0; i < consultas.length; i++) {
+                    console.log([i], ' - ', consultas[i]);
+                }
+
+                console.log('Escolha pelo índice qual consulta deseja atualizar.');
+
                 break;
 
             case 4:
