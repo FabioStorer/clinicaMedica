@@ -1,3 +1,6 @@
+
+                let consultaAtualizar
+                let atributoAtualizar
 const consultas = [{
     nomePaciente: 'Fabio',
     nomeMedico: 'Carlos',
@@ -100,42 +103,28 @@ process.stdin.on('data', function (data) {
 
                 break;
 
-            case 3:
-
-                let consultaAtualizar
-                let atributoAtualizar
-                let numeros = Object.entries(consultas);
-                if (!consultaAtualizar) {
+                case 3:
+                    let numeros = Object.entries(consultas[0]);
+                    if (!consultaAtualizar) {
                     consultaAtualizar = input
                     console.log('Escolha pelo índice qual dado deseja atualizar:');
-                    let j = 1;
                     for (let i = 0; i < numeros.length; i++) {
-                        console.log(j + '.', numeros[i][1]);
-                        j++;
+                        console.log(i+1 + '.', numeros[i][0], numeros[i][1]);
                     }
                 } else if (!atributoAtualizar) {
-                    atributoAtualizar = input;
+                    atributoAtualizar = numeros[input-1][0];
                     console.log('Qual dado deseja substituir nesse atributo?');
-
+                    
                 } else {
-                    consultas[consultaAtualizar][atributoAtualizar] = input;
+                    consultas[consultaAtualizar][atributoAtualizar] = input;    
+                    opcao = 0;
+                    console.log('Escolha uma nova opção ou digite "Sair" para finalizar.');
+                    console.log(1, ' Adicionar uma nova consulta.');
+                    console.log(2, ' Listar todas as consultas.');
+                    console.log(3, ' Atualizar uma consulta existente.');
+                    console.log(4, ' Cancelar uma consulta.');
                 }
 
-                let a = input
-                if (!a) {
-                    console.log(a);
-                    if (a == 1) {
-                        dados.nomePaciente = input;
-                        console.log(dados.nomePaciente);
-                    }
-                }
-
-                opcao = 0;
-                console.log('Escolha uma nova opção ou digite "Sair" para finalizar.');
-                console.log(1, ' Adicionar uma nova consulta.');
-                console.log(2, ' Listar todas as consultas.');
-                console.log(3, ' Atualizar uma consulta existente.');
-                console.log(4, ' Cancelar uma consulta.');
 
                 break;
 
