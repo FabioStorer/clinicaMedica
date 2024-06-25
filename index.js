@@ -1,4 +1,9 @@
-const consultas = [];
+const consultas = [{
+    nomePaciente: 'Fabio',
+    nomeMedico: 'Carlos',
+    data: '31 de janeiro',
+    hora: '13h'
+}];
 let dados = {
     nomePaciente: '',
     nomeMedico: '',
@@ -38,6 +43,17 @@ process.stdin.on('data', function (data) {
             opcao = 0;
         } else if (opcao == 3) {
             console.log('Vamos atualizar uma consulta.');
+
+            if (!consultas) {
+                console.log('Não há consultas cadastradas.')
+            } else {
+
+                console.log('Aqui está a lista de todas as consultas cadastradas:');
+                for (let i = 0; i < consultas.length; i++) {
+                    console.log([i], ' - ', consultas[i]);
+                }
+                console.log('Escolha pelo índice qual consulta deseja atualizar.');
+            }
         } else if (opcao == 4) {
             console.log('Vamos cancelar uma consulta:');
         }
@@ -77,12 +93,17 @@ process.stdin.on('data', function (data) {
 
             case 3:
 
-                console.log('Aqui está a lista de todas as consultas cadastradas:');
-                for (let i = 0; i < consultas.length; i++) {
-                    console.log([i], ' - ', consultas[i]);
+                console.log('Escolha pelo índice qual dado deseja atualizar:');
+                let j = 1;
+                let numeros = Object.entries(dados);
+                for (let i = 0; i < numeros.length; i++) {
+                    console.log(j, numeros[i]);
+                    j++;
                 }
 
-                console.log('Escolha pelo índice qual consulta deseja atualizar.');
+                if (numeros == 1) {
+                    console.log(dados.nomePaciente);
+                }
 
                 break;
 
