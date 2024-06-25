@@ -1,4 +1,4 @@
-const consultas = ['a', 'b', 'c'];
+const consultas = [];
 let dados = {
     nomePaciente: '',
     nomeMedico: '',
@@ -30,6 +30,12 @@ process.stdin.on('data', function (data) {
             for (let i = 0; i < consultas.length; i++) {
                 console.log([i], ' - ', consultas[i]);
             }
+            console.log('Escolha uma nova opção ou digite "Sair" para finalizar.');
+            console.log(1, ' Adicionar uma nova consulta.');
+            console.log(2, ' Listar todas as consultas.');
+            console.log(3, ' Atualizar uma consulta existente.');
+            console.log(4, ' Cancelar uma consulta.');
+            opcao = 0;
         } else if (opcao == 3) {
             console.log('Vamos atualizar uma consulta.');
         } else if (opcao == 4) {
@@ -69,10 +75,6 @@ process.stdin.on('data', function (data) {
 
                 break;
 
-            case 2:
-
-                break;
-
             case 3:
 
                 break;
@@ -83,6 +85,12 @@ process.stdin.on('data', function (data) {
 
             default:
                 console.log('Opção inválida.');
+                opcao = 0;
+                console.log('Escolha uma nova opção ou digite "Sair" para finalizar.');
+                console.log(1, ' Adicionar uma nova consulta.');
+                console.log(2, ' Listar todas as consultas.');
+                console.log(3, ' Atualizar uma consulta existente.');
+                console.log(4, ' Cancelar uma consulta.');
                 break;
         }
 })
