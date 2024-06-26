@@ -124,6 +124,8 @@ process.stdin.on('data', function (data) {
                 } else {
                     consultas[consultaAtualizar][atributoAtualizar] = input;
                     opcao = 0;
+                    consultaAtualizar = 0
+                    atributoAtualizar = 0
                     console.log('Escolha uma nova opção ou digite "Sair" para finalizar.');
                     console.log(1, ' Adicionar uma nova consulta.');
                     console.log(2, ' Listar todas as consultas.');
