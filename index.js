@@ -21,7 +21,6 @@ let dados = {
 };
 let input = '';
 let opcao = 0;
-let cancelar = 'Consulta cancelada.';
 
 console.log('Olá, bem vindo(a). Selecione uma opção válida para começar:');
 console.log(1, ' Adicionar uma nova consulta.');
@@ -57,7 +56,6 @@ process.stdin.on('data', function (data) {
             if (!consultas) {
                 console.log('Não há consultas cadastradas.')
             } else {
-
                 console.log('Aqui está a lista de todas as consultas cadastradas:');
                 for (let i = 0; i < consultas.length; i++) {
                     console.log([i], ' - ', consultas[i]);
