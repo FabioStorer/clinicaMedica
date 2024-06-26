@@ -1,6 +1,6 @@
 
-                let consultaAtualizar
-                let atributoAtualizar
+let consultaAtualizar
+let atributoAtualizar
 const consultas = [{
     nomePaciente: 'Fabio',
     nomeMedico: 'Carlos',
@@ -108,20 +108,20 @@ process.stdin.on('data', function (data) {
 
                 break;
 
-                case 3:
-                    let numeros = Object.entries(consultas[0]);
-                    if (!consultaAtualizar) {
+            case 3:
+                let numeros = Object.entries(consultas[0]);
+                if (!consultaAtualizar) {
                     consultaAtualizar = input
                     console.log('Escolha pelo índice qual dado deseja atualizar:');
                     for (let i = 0; i < numeros.length; i++) {
-                        console.log(i+1 + '.', numeros[i][0], numeros[i][1]);
+                        console.log(i + 1 + '.', numeros[i][0], numeros[i][1]);
                     }
                 } else if (!atributoAtualizar) {
-                    atributoAtualizar = numeros[input-1][0];
+                    atributoAtualizar = numeros[input - 1][0];
                     console.log('Qual dado deseja substituir nesse atributo?');
-                    
+
                 } else {
-                    consultas[consultaAtualizar][atributoAtualizar] = input;    
+                    consultas[consultaAtualizar][atributoAtualizar] = input;
                     opcao = 0;
                     console.log('Escolha uma nova opção ou digite "Sair" para finalizar.');
                     console.log(1, ' Adicionar uma nova consulta.');
