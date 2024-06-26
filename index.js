@@ -6,6 +6,11 @@ const consultas = [{
     nomeMedico: 'Carlos',
     data: '31 de janeiro',
     hora: '13h'
+}, {
+    nomePaciente: 'Ana',
+    nomeMedico: 'Carlos',
+    data: '31 de janeiro',
+    hora: '14h'
 }];
 const consultasCanceladas = [];
 let dados = {
