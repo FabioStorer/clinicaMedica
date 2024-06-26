@@ -107,14 +107,17 @@ process.stdin.on('data', function (data) {
                 break;
 
             case 3:
-                let numeros = Object.entries(consultas[0]);
+                let numeros
+                numeros = Object.entries(consultas[0]);
                 if (!consultaAtualizar) {
                     consultaAtualizar = input
+                    numeros = Object.entries(consultas[consultaAtualizar])
                     console.log('Escolha pelo índice qual dado deseja atualizar:');
                     for (let i = 0; i < numeros.length; i++) {
                         console.log(i + 1 + '.', numeros[i][0], numeros[i][1]);
                     }
                 } else if (!atributoAtualizar) {
+                    let numeros = Object.entries(consultas[consultaAtualizar])
                     atributoAtualizar = numeros[input - 1][0];
                     console.log('Qual dado deseja substituir nesse atributo?');
 
