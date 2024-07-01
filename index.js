@@ -74,11 +74,9 @@ function cadastro(op) {
             if (!dados.nomePaciente) {
                 dados.nomePaciente = prompt('Informe o nome do paciente: ');
             } else if (!dados.nomeMedico) {
-                dados.nomeMedico = input;
-                console.log('Informe a data da consulta:');
+                dados.nomeMedico = prompt('Informe a data do médico: ');
             } else if (!dados.data) {
-                dados.data = input;
-                console.log('Informe o horário da consulta:');
+                dados.data = prompt('Informe o horário da consulta: ');
             } else {
                 dados.hora = input;
                 consultas.push(dados);
