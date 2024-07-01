@@ -67,13 +67,12 @@ function menuOpcao(op) {
 }
 
 function cadastro(op) {
-    
+
     switch (op) {
         case 1:
 
             if (!dados.nomePaciente) {
-                dados.nomePaciente = input;
-                console.log('Informe o nome do médico:');
+                dados.nomePaciente = prompt('Informe o nome do paciente: ');
             } else if (!dados.nomeMedico) {
                 dados.nomeMedico = input;
                 console.log('Informe a data da consulta:');
