@@ -1,4 +1,4 @@
-
+const prompt = require ('prompt-sync')();
 let consultaAtualizar
 let atributoAtualizar
 const consultas = [{
@@ -28,6 +28,44 @@ console.log(2, ' Listar todas as consultas.');
 console.log(3, ' Atualizar uma consulta existente.');
 console.log(4, ' Cancelar uma consulta.');
 
+function menuOpcao(op) {
+    if (op == 1) {
+        console.log('Informe o nome do paciente:');
+    } else if (op == 2) {
+        console.log('Aqui está a lista de todas as consultas cadastradas:');
+        for (let i = 0; i < consultas.length; i++) {
+            console.log([i], ' - ', consultas[i]);
+        }
+        console.log('Escolha uma nova opção ou digite "Sair" para finalizar.');
+        console.log(1, ' Adicionar uma nova consulta.');
+        console.log(2, ' Listar todas as consultas.');
+        console.log(3, ' Atualizar uma consulta existente.');
+        console.log(4, ' Cancelar uma consulta.');
+        op = 0;
+    } else if (op == 3) {
+        console.log('Vamos atualizar uma consulta.');
+
+        if (!consultas) {
+            console.log('Não há consultas cadastradas.')
+        } else {
+            console.log('Aqui está a lista de todas as consultas cadastradas:');
+            for (let i = 0; i < consultas.length; i++) {
+                console.log([i], ' - ', consultas[i]);
+            }
+            console.log('Escolha pelo índice qual consulta deseja atualizar.');
+        }
+    } else if (op == 4) {
+        console.log('Vamos cancelar uma consulta:');
+        console.log('Aqui está a lista de todas as consultas cadastradas:');
+        let k = 0;
+        for (let i = 0; i < consultas.length; i++) {
+            console.log([k], ' - ', consultas[i]);
+            k++
+        }
+        console.log('Escolha pelo índice qual consulta deseja cancelar.');
+    }
+}
+
 process.stdin.on('data', function (data) {
     input = data.toString().trim();
 
@@ -37,41 +75,7 @@ process.stdin.on('data', function (data) {
 
     if (!opcao) {
         opcao = Number(input);
-        if (opcao == 1) {
-            console.log('Informe o nome do paciente:');
-        } else if (opcao == 2) {
-            console.log('Aqui está a lista de todas as consultas cadastradas:');
-            for (let i = 0; i < consultas.length; i++) {
-                console.log([i], ' - ', consultas[i]);
-            }
-            console.log('Escolha uma nova opção ou digite "Sair" para finalizar.');
-            console.log(1, ' Adicionar uma nova consulta.');
-            console.log(2, ' Listar todas as consultas.');
-            console.log(3, ' Atualizar uma consulta existente.');
-            console.log(4, ' Cancelar uma consulta.');
-            opcao = 0;
-        } else if (opcao == 3) {
-            console.log('Vamos atualizar uma consulta.');
-
-            if (!consultas) {
-                console.log('Não há consultas cadastradas.')
-            } else {
-                console.log('Aqui está a lista de todas as consultas cadastradas:');
-                for (let i = 0; i < consultas.length; i++) {
-                    console.log([i], ' - ', consultas[i]);
-                }
-                console.log('Escolha pelo índice qual consulta deseja atualizar.');
-            }
-        } else if (opcao == 4) {
-            console.log('Vamos cancelar uma consulta:');
-            console.log('Aqui está a lista de todas as consultas cadastradas:');
-            let k = 0;
-            for (let i = 0; i < consultas.length; i++) {
-                console.log([k], ' - ', consultas[i]);
-                k++
-            }
-            console.log('Escolha pelo índice qual consulta deseja cancelar.');
-        }
+        menuOpcao(opcao)
     } else
 
         switch (opcao) {
