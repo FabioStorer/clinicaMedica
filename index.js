@@ -30,7 +30,7 @@ console.log(4, ' Cancelar uma consulta.');
 
 function menuOpcao(op) {
     if (op == 1) {
-        console.log('Informe o nome do paciente:');
+      //  console.log('Informe o nome do paciente:');
     } else if (op == 2) {
         console.log('Aqui está a lista de todas as consultas cadastradas:');
         for (let i = 0; i < consultas.length; i++) {
@@ -72,13 +72,13 @@ function cadastro(op) {
         case 1:
 
             if (!dados.nomePaciente) {
-                dados.nomePaciente = prompt('Informe o nome do paciente: ');
+                dados.nomePaciente = prompt('Informe o nome do paciente: ').trim();
             } else if (!dados.nomeMedico) {
-                dados.nomeMedico = prompt('Informe a data do médico: ');
+                dados.nomeMedico = prompt('Informe o nome do médico: ').trim();
             } else if (!dados.data) {
-                dados.data = prompt('Informe o horário da consulta: ');
+                dados.data = prompt('Informe o dia da consulta: ').trim();
             } else {
-                dados.hora = input;
+                dados.hora = prompt('Informe o horário da consulta: ').trim();
                 consultas.push(dados);
                 console.log(consultas);
                 dados = {
